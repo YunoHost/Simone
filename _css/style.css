@@ -5,6 +5,17 @@
     -webkit-box-sizing: border-box;
 }
 
+#jappix_mini,
+#jappix_mini:before,
+#jappix_mini:after,
+#jappix_mini *,
+#jappix_mini *:before,
+#jappix_mini *:after {
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+}
+
 /* micro clearfix (http://nicolasgallagher.com/micro-clearfix-hack/) */
 .cf:before,
 .cf:after {
@@ -260,6 +271,8 @@ hr {
         box-shadow: 0 5px 15px rgba(0,0,0,0.35);
     }
     .button-list .btn.btn-support {background-color:#C6F;border-color:#C6F;}
+
+
 
 /** *************************************************** **/
 /** ONLINE EDITION FORM **/
