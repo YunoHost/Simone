@@ -61,11 +61,34 @@ p {
 }
 
 
-
+/* Fix glyphicons vertical alignement */
 .glyphicon {
     top: 2px;
 }
 
+/* loader */
+.loader-content {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    padding-top: 10%;
+}
+.loader-content img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+
+/** *************************************************** **/
+/** MAIN CONTENT **/
+/** *************************************************** **/
 
 #wrapper {
     max-width: 920px;
@@ -73,13 +96,7 @@ p {
     margin: 0 auto;
 }
 
-#wrapper #win {
-    z-index: 1000;
-    position: absolute;
-    width: 880px;
-    top: 23px;
-}
-
+#wrapper #win,
 #wrapper #fail {
     z-index: 1000;
     position: absolute;
@@ -95,15 +112,59 @@ p {
 
 
 
+
+/** *************************************************** **/
+/** HEADER **/
+/** *************************************************** **/
+
+#logo {
+    position: relative;
+    float: right;
+    margin: 15px;
+}
+
+#logo img {
+    width: 80px;
+}
+
+#logo a {
+    opacity: 0.2;
+}
+
+#logo a:hover {
+    opacity: 0.4;
+}
+
+/* Back button (top left) */
+#previous {
+    color: #999;
+    font-size: 65%;
+    padding-right: 10px;
+}
+#previous:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+/** *************************************************** **/
+/** ONLINE EDITION FORM **/
+/** *************************************************** **/
+
 #form {
     position: absolute;
-    top: 1%;
+    top: 2%;
     margin-left: -20px;
     padding: 20px;
     height: 88%;
     width: 100%;
     max-width: 920px;
     z-index: 1;
+    border: 1px solid #eee;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(200, 200, 200, 0.25);
 }
 
 #form textarea {
@@ -119,6 +180,11 @@ p {
 
 
 
+
+
+/** *************************************************** **/
+/** ONLINE EDITION ACTIONS **/
+/** *************************************************** **/
 .actions {
     position: fixed;
     bottom: 5px;
@@ -151,6 +217,25 @@ p {
 .actions.edit #send,
 .actions.edit #back {display: block;}
 
+
+
+
+/* Paste to github */
+#gitarea {
+    width: 100%;
+    border-color: #CCC;
+    height: 5em;
+    color: #666;
+    font-size: 0.7em;
+    font-family: 'CosmicSansNeueMono', monospace;
+}
+
+
+
+/** *************************************************** **/
+/** LANGUAGE SWITCHER **/
+/** *************************************************** **/
+
 .languages {
     position: fixed;
     bottom: 5px;
@@ -160,7 +245,7 @@ p {
     z-index: 2;
     visibility: hidden;
     opacity: 0;
-    transition: all .5s ease;
+    transition: all .15s ease;
 }
 
 .languages.show {
@@ -173,71 +258,15 @@ p {
   visibility: hidden;
 }
 
-.languages button {
+.languages button,
+.languages a {
     display: inline-block;
+    font-weight: bold;
     margin-bottom: 10px;
     margin-left: 5px;
 }
 
-.languages a {
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 10px;
-}
 
-#gitarea {
-    width: 100%;
-    border-color: #CCC;
-    height: 5em;
-    color: #666;
-    font-size: 0.7em;
-    font-family: 'CosmicSansNeueMono', monospace;
-}
-
-#previous {
-    color: #999;
-    font-size: 65%;
-    padding-right: 10px;
-}
-
-#previous:hover {
-    text-decoration: none;
-    color: black;
-}
-
-.loader-content {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2000;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.5);
-    padding-top: 10%;
-}
-.loader-content img {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-#logo {
-    position: relative;
-    float: right;
-    margin: 15px;
-}
-
-#logo img {
-    width: 80px;
-}
-
-#logo a {
-    opacity: 0.2;
-}
-
-#logo a:hover {
-    opacity: 0.4;
-}
 
 
 /** *************************************************** **/
