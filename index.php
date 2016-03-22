@@ -41,14 +41,14 @@
 
     // Compile HTML content
     $content = Markdown($markdown);
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="<?php echo $lang ?>">
 <head>
 <title><?php echo $title ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="_css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="_css/hl.css">
