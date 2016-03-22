@@ -50,6 +50,11 @@ p {
     margin: 18px 0 13px;
 }
 
+hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 @media all and (max-width: 640px) {
     body {
         font-size: 1.6em;
@@ -59,7 +64,6 @@ p {
     h3 { font-size: 120%; }
     h4 { font-size: 100%; }
 }
-
 
 /* Fix glyphicons vertical alignement */
 .glyphicon {
@@ -148,6 +152,114 @@ p {
 
 
 
+
+/** *************************************************** **/
+/** HOMEPAGE **/
+/** *************************************************** **/
+.teasing-part {
+    display: none;
+    background: #222;
+    color: #eee; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.45);
+    z-index: 1000;
+    overflow: hidden
+}
+
+    .home-logo {
+        position: absolute;
+        top: 7%;
+        width: 100%;
+        text-align: center;  
+    }
+
+    .punchline {
+        position: absolute; 
+        top: 27%; 
+        width: 100%; 
+        text-align: center; 
+        font-weight: bold; 
+        margin: 50px auto 0  
+    }
+    .punchline p {
+        font-size: 3em;
+        margin-bottom: 4%
+    }
+
+    .yolobtn {
+        min-width: 200px; 
+        width: 20%; 
+        margin: 0 auto;
+        color: #222;
+        font-size: 1.6em
+    }
+
+    .main-links {
+        width: 100%;
+        position: absolute; 
+        top: 90%;
+        text-align: center;
+    }
+    .main-links a {
+        color: #777;
+    }
+
+.boring-part {}
+
+    .github-ribbon img {
+        position: fixed;
+        top: 0;
+        right: 0;
+        border: 0;
+    }
+
+    .home-panel {
+        width: 100%; 
+        max-height: 300px; 
+        overflow: hidden; 
+        border-radius: 5px; 
+        border: 1px solid rgba(0,0,0,0.15); 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    }
+    .home-panel img {
+        width: 100%;
+        min-width: 580px;
+    }
+    .home-panel + .call-to-action {
+        width: auto; 
+        text-align: center;
+        min-width: 150px; 
+        margin: 40px auto 0;
+    }
+    .home-panel + .call-to-action .btn {
+        min-width: 150px;
+        font-size: 1.5em;
+        margin-bottom:0.5em;
+    }
+
+    .feature-pic {
+        width: 100%; 
+        max-height: 290px; 
+        overflow: hidden; 
+        border-radius: 5px; 
+        border: 1px solid rgba(0,0,0,0.15); 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    }
+    .feature-pic img {
+        width: 100%;
+        min-width: 320px;
+        max-width: 635px
+    }
+
+    .button-list {}
+    .button-list .btn {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    }
+    .button-list .btn.btn-support {background-color:#C6F;border-color:#C6F;}
 
 /** *************************************************** **/
 /** ONLINE EDITION FORM **/
