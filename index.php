@@ -101,7 +101,8 @@
 
     <footer class="cf">
       <a href="https://twitter.com/yunohost">@YunoHost on Twitter</a>
-       • <a href="/sitemap_fr">Plan du site</a>
+       • <a href="/sitemap" data-i18n="sitemap">Sitemap</a>
+       • <a href="/support" data-i18n="support">Support</a>
        • Datalove <span class="glyphicon glyphicon-heart"></span>
     </footer>
 
