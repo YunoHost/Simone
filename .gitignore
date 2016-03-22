@@ -1,2 +1,5 @@
 *.swp
 ./feed.rss
+
+# HTpasswd file
+.htpasswd
