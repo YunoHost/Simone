@@ -17,6 +17,11 @@
 }
 
 
+
+/** *************************************************** **/
+/** HTML ELEMENTS **/
+/** *************************************************** **/
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -45,9 +50,22 @@ p {
     margin: 18px 0 13px;
 }
 
+@media all and (max-width: 640px) {
+    body {
+        font-size: 1.6em;
+    }
+    h1 { font-size: 200%; }
+    h2 { font-size: 160%; }
+    h3 { font-size: 120%; }
+    h4 { font-size: 100%; }
+}
+
+
+
 .glyphicon {
     top: 2px;
 }
+
 
 #wrapper {
     max-width: 920px;
@@ -75,15 +93,7 @@ p {
     }
 }
 
-@media all and (max-width: 640px) {
-    body {
-        font-size: 1.6em;
-    }
-    h1 { font-size: 200%; }
-    h2 { font-size: 160%; }
-    h3 { font-size: 120%; }
-    h4 { font-size: 100%; }
-}
+
 
 #form {
     position: absolute;
@@ -107,6 +117,8 @@ p {
     border: none;
 }
 
+
+
 .actions {
     position: fixed;
     bottom: 5px;
@@ -116,7 +128,7 @@ p {
     z-index: 2;
     visibility: hidden;
     opacity: 0;
-    transition: all .5s ease;
+    transition: all .15s ease;
 }
 
 .actions.show {
@@ -124,11 +136,20 @@ p {
   visibility: visible;
 }
 
-.actions a, .actions button {
+.actions a,
+.actions button {
     display: inline-block;
     width: 120px;
     margin-bottom: 10px;
+    display: none;
 }
+.actions.view #edit {display: block;}
+.actions.preview #send,
+.actions.preview #edit,
+.actions.preview #back {display: block;}
+.actions.edit #preview,
+.actions.edit #send,
+.actions.edit #back {display: block;}
 
 .languages {
     position: fixed;

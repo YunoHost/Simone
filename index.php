@@ -57,23 +57,32 @@
     <link rel="stylesheet" type="text/css" href="_css/style.css">
     <!-- Always define js console -->
     <script type="text/javascript">if (typeof console === "undefined" || typeof console.log === "undefined") {console = {};console.log = function () {};}</script>
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-  _paq.push(["setCookieDomain", "*.yunohost.org"]);
-  _paq.push(["trackPageView"]);
-  _paq.push(["enableLinkTracking"]);
 
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.beudibox.fr/";
-    _paq.push(["setTrackerUrl", u+"piwik.php"]);
-    _paq.push(["setSiteId", "1"]);
-    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Piwik Code -->
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+      _paq.push(["setCookieDomain", "*.yunohost.org"]);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+
+      (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.beudibox.fr/";
+        _paq.push(["setTrackerUrl", u+"piwik.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+        g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <!-- End Piwik Code -->
+
+    <script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="_js/sammy-latest.min.js"></script>
+    <script type="text/javascript" src="_js/sammy.storage.js"></script>
+    <script type="text/javascript" src="_js/highlight.min.js"></script>
+    <script type="text/javascript" src="_js/marked.js"></script>
+    <script type="text/javascript" src="_js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_js/app.js"></script>
 </head>
 
 <body>
@@ -203,13 +212,6 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <script type="text/javascript" src="_js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="_js/sammy-latest.min.js"></script>
-    <script type="text/javascript" src="_js/sammy.storage.js"></script>
-    <script type="text/javascript" src="_js/highlight.min.js"></script>
-    <script type="text/javascript" src="_js/marked.js"></script>
-    <script type="text/javascript" src="_js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_js/app.js"></script>
-</body>
 
+</body>
 </html>

@@ -69,7 +69,9 @@ $(document).ready(function () {
                 page = store.get('page')
                 title = page +' • '+ conf.siteName;
                 $('#sendModal').modal('hide');
-                $('.actions').children().hide();
+                // $('.actions').children().hide();
+                $('.actions').addClass('show').addClass('view').removeClass('edit preview');
+                $('.languages').addClass('show')
                 $('#form').hide();
                 $('#edit').attr('href', '#/'+ page +'/edit').fadeIn('fast');
                 $('#content').fadeIn('fast');
@@ -105,12 +107,13 @@ $(document).ready(function () {
             c.view(c.params['name']);
             document.title = 'Edit '+ c.params['name'];
             $('#sendModal').modal('hide');
-            $('.actions').children().hide();
-            $('.languages').addClass('hide');
+            // $('.actions').children().hide();
+            $('.actions').addClass('show').addClass('edit').removeClass('view preview');
+            // $('.languages').addClass('hide');
             $('#content').hide();
-            $('#preview').attr('href', '#/'+ c.params['name'] +'/preview').fadeIn('fast');
-            $('#back').attr('href', '#/'+ c.params['name']).fadeIn('fast');
-            $('#send').fadeIn('fast');
+            $('#preview').attr('href', '#/'+ c.params['name'] +'/preview')// .fadeIn('fast');
+            $('#back').attr('href', '#/'+ c.params['name']) // .fadeIn('fast');
+            // $('#send').fadeIn('fast');
             $('#form').fadeIn('fast');
             $('#sendModal form').attr('action', '#/'+ c.params['name'] +'/save');
         });
@@ -119,12 +122,13 @@ $(document).ready(function () {
             c.view(c.params['name']);
             document.title = 'Preview '+ c.params['name'];
             $('#sendModal').modal('hide');
-            $('.actions').children().hide();
-            $('.languages').addClass('hide');
+            // $('.actions').children().hide();
+            $('.actions').addClass('show').addClass('preview').removeClass('view edit');
+            // $('.languages').addClass('hide');
             $('#form').hide();
-            $('#edit').attr('href', '#/'+ c.params['name'] +'/edit').fadeIn('fast');
-            $('#back').attr('href', '#/'+ c.params['name']).fadeIn('fast');
-            $('#send').fadeIn('fast');
+            $('#edit').attr('href', '#/'+ c.params['name'] +'/edit') //.fadeIn('fast');
+            $('#back').attr('href', '#/'+ c.params['name']) //.fadeIn('fast');
+            // $('#send').fadeIn('fast');
             $('#content').fadeIn('fast');
             $('#sendModal form').attr('action', '#/'+ c.params['name'] +'/save');
         });
@@ -262,19 +266,19 @@ $(document).ready(function () {
         $(this).select();
     });
 
-    var timer;
+    // var timer;
 
-    $(window).mousemove(function () {
-        $('.actions').addClass('show');
-        $('.languages').addClass('show');
-        try {
-            clearTimeout(timer);
-        } catch (e) {}
-        timer = setTimeout(function () {
-            $('.actions').removeClass('show');
-            $('.languages').removeClass('show');
-        }, 1000);
-    });
+    // $(window).mousemove(function () {
+    //     $('.actions').addClass('show');
+    //     $('.languages').addClass('show');
+    //     try {
+    //         clearTimeout(timer);
+    //     } catch (e) {}
+    //     timer = setTimeout(function () {
+    //         $('.actions').removeClass('show');
+    //         $('.languages').removeClass('show');
+    //     }, 1000);
+    // });
 
     $.getJSON('i18n.json', function(lng) {
         i18n = lng;
