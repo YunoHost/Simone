@@ -1,0 +1,19 @@
+# Protect save.php from anonymous users
+<FilesMatch "save.php">
+    #AuthName "Member Only"
+    #AuthType Basic
+    #AuthUserFile /path/to/.htpasswd
+    #require valid-user
+</FilesMatch>
+
+# Use PHP index, then HTML
+DirectoryIndex index.php index.html 
+
+# Serve image from _pages folder
+RewriteEngine On
+RewriteRule ^images/(.*) /_pages/images/$1 [L]
+
+# Redirect /path to index.php for markdown processing
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
