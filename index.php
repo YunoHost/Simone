@@ -90,6 +90,12 @@
         </div>
     </div>
 
+    <footer class="cf">
+      <a href="https://twitter.com/yunohost">@YunoHost on Twitter</a>
+       • <a href="/sitemap_fr">Plan du site</a>
+       • Datalove <span class="glyphicon glyphicon-heart"></span>
+    </footer>
+
     <div class="actions" style="display: none">
         <a class="btn btn-default" id="edit">
             <span class="glyphicon glyphicon-pencil"></span>&nbsp; <span data-i18n="edit"></span>

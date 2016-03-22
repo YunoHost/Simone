@@ -1,16 +1,21 @@
+/* Box sizing FTW (http://www.paulirish.com/2012/box-sizing-border-box-ftw/) */
 *, *:before, *:after {
-    box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-}
-
-.panel-body *,
-.panel-body *:before,
-.panel-body *:after {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
+
+/* micro clearfix (http://nicolasgallagher.com/micro-clearfix-hack/) */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
@@ -211,4 +216,22 @@ p {
 
 #logo a:hover {
     opacity: 0.4;
+}
+
+
+/** *************************************************** **/
+/** FOOTER **/
+/** *************************************************** **/
+body > footer {
+    text-align: center;
+    padding: 2em 0;
+    margin-top: 2em;
+    border-top: 1px solid #eee;
+    font-size: 75%;
+    color: #999;
+}
+body > footer a,
+body > footer a:link,
+body > footer a:visited {
+    color: #999;
 }
