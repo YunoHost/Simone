@@ -100,7 +100,9 @@
     </div>
 
     <footer class="cf">
-      <a href="https://twitter.com/yunohost">@YunoHost on Twitter</a>
+       @YunoHost on
+       <a href="https://framasphere.org/people/01868d20330c013459cf2a0000053625">Diaspora*</a>
+       • <a href="https://twitter.com/yunohost">Twitter</a>
        • <a href="/sitemap" data-i18n="sitemap">Sitemap</a>
        • <a href="/support" data-i18n="support">Support</a>
        • Datalove <span class="glyphicon glyphicon-heart"></span>
