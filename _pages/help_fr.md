@@ -4,4 +4,4 @@ Sauf mention contraire, le contenu de ce site est sous licence Creative Common `
 
 http://creativecommons.org/licenses/by-sa/3.0/fr/
 
-Ce wiki est propulsé par [Simone](https://github.com/Kloadut/Simone)
+Ce wiki est propulsé par [Simone](https://github.com/YunoHost/Simone/)
