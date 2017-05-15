@@ -148,20 +148,20 @@
           <form class="form-horizontal" method="POST" role="form">
               <div class="modal-body">
                   <div class="form-group">
-                      <label for="user" class="col-sm-4 control-label">
+                      <label for="email" class="col-sm-4 control-label">
                           <span data-i18n="email"></span>
                           <span class="glyphicon glyphicon-question-sign"
                                 title="To allow us to fight spam, you will be asked to validate you submission be email. We'll also keep you informed of it's progress ! We won't make your email public and won't use it for anything else !"></span>
                       </label>
 
                       <div class="col-sm-8">
-                          <input type="email" class="form-control" id="user" name="user" placeholder="john@doe.org" required>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="john@doe.org" required>
                       </div>
                   </div> 
                   <div class="form-group">
                       <label for="descr" class="col-sm-4 control-label" data-i18n="description"></label>
                       <div class="col-sm-8">
-                          <textarea rows="2" class="form-control" id="descriptiong" name="descr" placeholder="Tell us what you did there !"></textarea>
+                          <textarea rows="2" class="form-control" id="descr" name="descr" placeholder="Tell us what you did there !"></textarea>
                       </div>
                   </div>
                   <div class="text-center">
@@ -171,8 +171,8 @@
                       </button>
                   </div>
               </div>
-              <div class="alert alert-info text-center" style="width:90%; margin-left:auto;
-              margin-right:auto; margin-top:1em; margin-bottom:1em;">
+              <div id="sendFail" class="alert alert-danger text-center" style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:1em;display: none"></div>
+              <div class="alert alert-info text-center" style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:1em;">
                   <span class="glyphicon glyphicon-info-sign"></span> ProTip™ : if you
                   plan to contribute often to the documentation, consider using
                   Git/Github directly !

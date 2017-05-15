@@ -164,10 +164,10 @@ $(document).ready(function () {
                 $('#sendModal alert p').html('Wrong username/password combination');
             } else {
                 console.log(xhr);
-                $('#sendModal').modal('hide');
-                $('#fail').fadeIn('fast', function() {
+                $('#sendFail').html(xhr.responseText);
+                $('#sendFail').fadeIn('fast', function() {
                     setTimeout(function() {
-                        $('#fail').fadeOut();
+                        $('#sendFail').fadeOut();
                     }, 3000);
                 });
                 return false;
