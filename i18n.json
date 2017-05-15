@@ -1,6 +1,7 @@
 {
     "en": {
         "edit": "Edit",
+        "description": "Description",
         "preview": "Preview",
         "send": "Send",
         "revert": "Revert",
@@ -26,6 +27,7 @@
     },
     "fr": {
         "edit": "Éditer",
+        "description": "Description",
         "preview": "Aperçu",
         "send": "Envoyer",
         "revert": "Annuler",

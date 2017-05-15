@@ -136,14 +136,16 @@ $(document).ready(function () {
     });
 
     function sendModifications(page) {
-        auth = "Basic "+ btoa($('#user').val() +':'+ $('#password').val());
+        email = $('#email').val();
+        descr = $('#descr').val();
         $('#reallysend').after('&nbsp;<img src="/ajax-loader.gif" class="ajax-loader">');
         $.ajax({
-            url: 'save.php',
+            url: 'submit.php',
             type: 'POST',
-            data: { 'page': page, 'content': store.get('data-'+ page) },
-            beforeSend: function(req) {
-                req.setRequestHeader('Authorization', auth);
+            data: { 'page': page, 
+                    'content': store.get('data-'+ page), 
+                    'email': email,
+                    'descr': descr 
             }
         })
         .success(function(data) {
@@ -161,6 +163,7 @@ $(document).ready(function () {
             if (xhr.status == 401) {
                 $('#sendModal alert p').html('Wrong username/password combination');
             } else {
+                console.log(xhr);
                 $('#sendModal').modal('hide');
                 $('#fail').fadeIn('fast', function() {
                     setTimeout(function() {

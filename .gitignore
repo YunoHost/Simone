@@ -3,3 +3,6 @@
 
 # HTpasswd file
 .htpasswd
+
+_botclone/
+_pending/
