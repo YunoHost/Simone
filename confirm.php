@@ -1,11 +1,7 @@
 <?php
 
-// FOR DEBUGGING, NOT FOR PROD !!
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
-
-$email_from  = "yunobot@some.domain.tld";
-$hub = "/var/www/Simone/hub/bin/hub";
+include "config.php";
+include "common.php";
 
     function validateInputs()
     {
@@ -45,19 +41,14 @@ $hub = "/var/www/Simone/hub/bin/hub";
         return "";
     }
 
-    function makePullRequest()
+    function makePullRequest($id)
     {
         global $email_from, $hub;
 
         // Get POST data
-        $id = $_GET["id"];
         $page = file_get_contents('_pending/'.$id.'/page').".md";
         $descr = file_get_contents('_pending/'.$id.'/descr');
         $PRurl = '_pending/'.$id.'/pr';
-
-        // Create submission directory
-        $sshkey = dirname(__FILE__)."/.ssh/id_rsa";
-
         $branch = 'anonymous-'.$id;
 
         $c = 'cd _botclone && '.
@@ -76,8 +67,10 @@ $hub = "/var/www/Simone/hub/bin/hub";
              'sudo git push origin '.$branch.' && '.
              'sudo '.$hub.' pull-request -m "[Anonymous contrib] '.$descr.'" > ../'.$PRurl;
 
-        shell_exec($c);
-        shell_exec("cd _botclone && git checkout master");
+        echo $c;
+        echo "\n";
+        echo shell_exec($c);
+        echo shell_exec("cd _botclone && git checkout master");
 
         if (file_exists($PRurl))
         {
@@ -89,11 +82,10 @@ $hub = "/var/www/Simone/hub/bin/hub";
         }
     }
 
-    function sendMail($PRurl)
+    function sendMail($id, $PRurl)
     {
         global $email_from, $simone_root;
 
-        $id = $_GET["id"];
         $email = file_get_contents('_pending/'.$id.'/email');
 
         // From, to, subject, message ...
@@ -144,16 +136,19 @@ $hub = "/var/www/Simone/hub/bin/hub";
     }
     else
     {
-        $PRurl = makePullRequest();
+        $id = $_GET["id"];
+        $PRurl = makePullRequest($id);
 
         if ($PRurl == "")
         {
             echo "Woopsies ! Unable to create the Pull Request on Github. Please contact the Yunohost support to fix the situation.";
+            _log($id, "CONFIRM", "Failed : Unable to create PR");
             return;
         }
         else
         {
-            sendMail($PRurl);
+            sendMail($id, $PRurl);
+            _log($id, "CONFIRM", "Success ! PR ".$PRurl." created");
             deletePending();
             echo "Succesfully created a Pull Request on Github !\n".$PRurl;
         }

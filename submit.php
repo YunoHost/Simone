@@ -1,11 +1,7 @@
 <?php
 
-// FOR DEBUGGING, NOT FOR PROD !!
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
-
-    $email_from  = "yunobot@some.domain.tld";
-    $simone_root = "https://some.domain.tld/simone/";
+include "config.php";
+include "common.php";
 
     function validateInputs()
     {
@@ -132,6 +128,7 @@ error_reporting(E_ALL);
         $token = md5(uniqid(rand(), true));
 
         saveSubmission($id, $token);
+        _log($id, "SUBMIT", "Pending");
         sendMail($id, $token);
     }
 
