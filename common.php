@@ -10,7 +10,7 @@ function _log($id, $action, $message)
     $page = file_get_contents('_pending/'.$id.'/page');
     $email = file_get_contents('_pending/'.$id.'/email');
 
-    $full_message = "[".$time."] ".$ip." ".$action." ".$id." from ".$email." for page ".$page." : ".$message+"\n";
+    $full_message = "[".$time."] ".$ip." ".$action." ".$id." from ".$email." for page ".$page." : ".$message."\n";
 
     file_put_contents($log_file, $full_message, FILE_APPEND);
 }

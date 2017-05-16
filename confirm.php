@@ -43,34 +43,9 @@ include "common.php";
 
     function makePullRequest($id)
     {
-        global $email_from, $hub;
-
-        // Get POST data
-        $page = file_get_contents('_pending/'.$id.'/page').".md";
-        $descr = file_get_contents('_pending/'.$id.'/descr');
         $PRurl = '_pending/'.$id.'/pr';
-        $branch = 'anonymous-'.$id;
-
-        $c = 'cd _botclone && '.
-             'git checkout master && '.
-             'sudo git pull && '.
-             'git checkout -b '.$branch.' && '.
-             'cd .. && '.
-             'cp _pending/'.$id.'/content _botclone/'.$page.' && '.
-             'cd _botclone/ && '.
-             'git add '.$page.' && '.
-             'export GIT_AUTHOR_NAME="Yunobot" && '.
-             'export GIT_AUTHOR_EMAIL="'.$email_from.'" && '.
-             'export GIT_COMMITTER_NAME="Yunobot" && '.
-             'export GIT_COMMITTER_EMAIL="'.$email_from.'" && '.
-             'git commit '.$page.' -m "'.$descr.'" && '.
-             'sudo git push origin '.$branch.' && '.
-             'sudo '.$hub.' pull-request -m "[Anonymous contrib] '.$descr.'" > ../'.$PRurl;
-
-        echo $c;
-        echo "\n";
-        echo shell_exec($c);
-        echo shell_exec("cd _botclone && git checkout master");
+        shell_exec("./createPR.sh ".$id);
+        shell_exec("cd _botclone && git checkout master");
 
         if (file_exists($PRurl))
         {
