@@ -161,7 +161,7 @@
                   <div class="form-group">
                       <label for="descr" class="col-sm-4 control-label" data-i18n="description"></label>
                       <div class="col-sm-8">
-                          <textarea rows="2" class="form-control" id="descr" name="descr" placeholder="Tell us what you did there !"></textarea>
+                          <textarea maxlength="150" rows="2" class="form-control" id="descr" name="descr" placeholder="Tell us what you did there !"></textarea>
                       </div>
                   </div>
                   <div class="text-center">

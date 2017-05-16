@@ -4,11 +4,8 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-
     $email_from  = "yunobot@some.domain.tld";
     $simone_root = "https://some.domain.tld/simone/";
-
-    echo var_dump($_POST);
 
     function validateInputs()
     {
@@ -26,10 +23,10 @@ error_reporting(E_ALL);
         }
 
         // Get POST data
-        $email = $_POST["email"];
-        $page = $_POST["page"];
+        $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+        $descr = filter_var($_POST["descr"], FILTER_SANITIZE_STRING);
+        $page  = filter_var($_POST["page"],  FILTER_SANITIZE_STRING);
         $content = $_POST["content"];
-        $descr = $_POST["descr"];
 
         // Validate page name
         if (!preg_match('/^[A-Za-z0-9_]+$/', $page)) 
@@ -44,7 +41,7 @@ error_reporting(E_ALL);
         }
 
         // Check the email syntax is valid
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+        if (($email == "") || (!filter_var($email, FILTER_VALIDATE_EMAIL)))
         {
             return "Invalid email syntax.";
         } 
@@ -56,10 +53,14 @@ error_reporting(E_ALL);
             return "Invalid email domain.";
         } 
 
-        // Don't allow empty descriptions
+        // Don't allow empty descriptions or decriptions too long
         if (strlen($descr) <= 0)
         {
             return "Description empty.";
+        }
+        if (strlen($descr) > 150)
+        {
+            return "Description too long.";
         }
 
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -77,10 +78,10 @@ error_reporting(E_ALL);
     function saveSubmission($id, $token)
     {
         // Get POST data
-        $email = $_POST["email"];
-        $page = $_POST["page"];
+        $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+        $descr = filter_var($_POST["descr"], FILTER_SANITIZE_STRING);
+        $page  = filter_var($_POST["page"],  FILTER_SANITIZE_STRING);
         $content = $_POST["content"];
-        $descr = $_POST["descr"];
 
         // Also save the submitter IP's
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -90,12 +91,12 @@ error_reporting(E_ALL);
     
         exec('mkdir -p '.$subdir);
 
-        file_put_contents($subdir.'/email', $email);
-        file_put_contents($subdir.'/page', $page);
+        file_put_contents($subdir.'/email',   $email);
+        file_put_contents($subdir.'/page',    $page);
         file_put_contents($subdir.'/content', $content);
-        file_put_contents($subdir.'/descr', $descr);
-        file_put_contents($subdir.'/token', $token);
-        file_put_contents($subdir.'/ip', $ip);
+        file_put_contents($subdir.'/descr',   $descr);
+        file_put_contents($subdir.'/token',   $token);
+        file_put_contents($subdir.'/ip',      $ip);
     }
 
     function sendMail($id, $token)
@@ -103,7 +104,7 @@ error_reporting(E_ALL);
         global $email_from, $simone_root;
 
         // From, to, subject, message ...
-        $email_to      = $_POST["email"];
+        $email_to      = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
         $email_subject = "[Yunohost doc] Please confirm your submission !";
         $email_message = "Thank you for your recent contribution on the Yunohost documentation !\n\n In order to be able to validate it, we just need you to click on the following link to confirm that your email is valid :\n".$simone_root."confirm.php?id=".$id."&token=".$token."\n";
 
