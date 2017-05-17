@@ -1,8 +1,6 @@
 *.swp
 ./feed.rss
 
-github_token
-
 config/
 _botfork/
 _pending_contrib/

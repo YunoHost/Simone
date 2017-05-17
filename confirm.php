@@ -124,7 +124,7 @@ include "common.php";
         else
         {
             sendMail($id, $PRurl);
-            _log($id, "CONFIRM", "Success ! PR ".$PRurl." created");
+            _log($id, "CONFIRM", "Success ! PR ".$PRurl);
             deletePending();
             echo "Succesfully created a Pull Request on Github !\n".$PRurl;
         }
