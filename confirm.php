@@ -18,15 +18,14 @@ include "common.php";
         $id = $_GET["id"];
         $token = $_GET["token"];
 
-        // Validate id format
-        $d = datetime::createfromformat('Y-m-d_h-i-s', $id)->format("Y-m-d_h-i-s");
-        if ($d != $id)
+        // Validate id format (YYYY-MM-DD_HH-MM-SS)
+        if (!preg_match('/^[0-9_-]{19}$/', $id))
         {
             return "Invalid id format.";
         }
 
         // Validate token format
-        if (!preg_match('/^[a-z0-9_]+$/', $token))
+        if (!preg_match('/^[a-z0-9]{32}$/', $token))
         {
             return "Invalid token format.";
         }

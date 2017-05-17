@@ -25,12 +25,12 @@ function createPR()
     local BRANCH=$1
     local TITLE=$2
 
-    ANSWER=$(curl https://api.github.com/repos/alexAubin/doc/pulls \
+    ANSWER=$(curl https://api.github.com/repos/$REPO/pulls \
                   -H "Authorization: token $REPO_TOKEN" \
                   --data '{   "title":"'"$TITLE"'",
                                "head":"'"$BRANCH"'",
                                "base":"master",
-                                "maintainer_can_modify":true }')
+                               "maintainer_can_modify":true }')
 
     echo "$ANSWER" >&2
 
@@ -41,19 +41,36 @@ function createPR()
     | awk '{print $1}'
 }
 
+function validateID()
+{
+    local ID="$1"
+
+    if ! (echo "$ID" | grep -E "^[0-9_-]{19}$" > /dev/null)
+    then
+        echo "Invalid ID format"
+        exit 1
+    fi
+
+    if [ ! -d "_pending/$ID" ]
+    then
+        echo "No pending request for ID $ID"
+        exit 2
+    fi
+}
+
 function main()
 {
-    local ID=$1
+    local ID="$1"
     local PAGE="$(cat _pending/$ID/page).md"
     local DESCR_FILE="_pending/$ID/descr"
-    local PRURL_FILE="../_pending/$ID/pr";
+    local PRURL_FILE="_pending/$ID/pr";
     local BRANCH="anonymous-$ID";
 
     cd _botclone
     _git checkout master
     _git pull
 
-    if [ $(git branch --list | grep "^  $BRANCH$") ]
+    if git branch --list | grep "^  $BRANCH$" > /dev/null
     then
         _git branch -D $BRANCH
     fi
@@ -73,8 +90,9 @@ function main()
     _git push origin $BRANCH --force
 
     local TITLE=$(echo -n "[Anonymous contrib] "; cat "../$DESCR_FILE")
-    createPR "$BRANCH" "$TITLE" > $PRURL_FILE
+    createPR "$BRANCH" "$TITLE" > ../$PRURL_FILE
 }
 
-main $1 >> ./debug.log 2>&1
+validateID "$1"
+main "$1" >> ./debug.log 2>&1
 
