@@ -150,8 +150,7 @@
                   <div class="form-group">
                       <label for="email" class="col-sm-4 control-label">
                           <span data-i18n="email"></span>
-                          <span class="glyphicon glyphicon-question-sign"
-                                title="To allow us to fight spam, you will be asked to validate you submission be email. We'll also keep you informed of it's progress ! We won't make your email public and won't use it for anything else !"></span>
+                          <span class="glyphicon glyphicon-question-sign" data-i18n="[title]whyEmail" title=""></span>
                       </label>
 
                       <div class="col-sm-8">
@@ -161,7 +160,7 @@
                   <div class="form-group">
                       <label for="descr" class="col-sm-4 control-label" data-i18n="description"></label>
                       <div class="col-sm-8">
-                          <textarea maxlength="150" rows="2" class="form-control" id="descr" name="descr" placeholder="Tell us what you did there !"></textarea>
+                          <textarea maxlength="150" rows="2" class="form-control" id="descr" name="descr" data-i18n="[placeholder]tellUsWhatYouDid"></textarea>
                       </div>
                   </div>
                   <div class="text-center">
@@ -173,10 +172,7 @@
               </div>
               <div id="sendFail" class="alert alert-danger text-center" style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:1em;display: none"></div>
               <div class="alert alert-info text-center" style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:1em;">
-                  <span class="glyphicon glyphicon-info-sign"></span> ProTip™ : if you
-                  plan to contribute often to the documentation, consider using
-                  Git/Github directly !
-              </div>
+                  <span class="glyphicon glyphicon-info-sign"></span>&nbsp;<span data-i18n="considerUsingGithub"></span></div>
           </form>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

@@ -217,7 +217,22 @@ $(document).ready(function () {
     function changeLanguage(lang) {
         $('[data-i18n]').each( function() {
             key = $( this ).attr('data-i18n');
-            $( this ).html(i18n[lang][key]);
+            // Dirty hack to be able to modify other stuff than the inner html,
+            // like i18next does.
+            if (key.startsWith("[title]"))
+            {
+                key = key.replace("[title]", "")
+                $( this ).attr("title", i18n[lang][key]);
+            }
+            else if (key.startsWith("[placeholder]"))
+            {
+                key = key.replace("[placeholder]", "")
+                $( this ).prop("placeholder", i18n[lang][key]);
+            }
+            else
+            {
+                $( this ).html(i18n[lang][key]);
+            }
         });
         store.set('lang', lang);
     }
