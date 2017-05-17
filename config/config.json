@@ -1,0 +1,10 @@
+{
+    "siteName": "YunoHost",
+    "requestEmail": "doc-request@yunohost.org",
+    "gitRepository": "https://github.com/YunoHost/doc",
+    "defaultLanguage": "en",
+    "languages": {
+         "en": "English",
+         "fr": "Français"
+    }
+}

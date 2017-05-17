@@ -1,8 +1,7 @@
 *.swp
 ./feed.rss
 
-# HTpasswd file
-.htpasswd
+github_token
 
 _botclone/
 _pending/

@@ -6,8 +6,8 @@ readonly SIMONE_ROOT="/var/www/Simone"
 readonly AUTHOR_EMAIL="yunobot@some.domain.tld"
 
 readonly REPO="alexAubin/doc"
-readonly REPO_KEY="$SIMONE_ROOT/.ssh/id_rsa"
-readonly REPO_TOKEN=$(cat github_token)
+readonly REPO_KEY="$SIMONE_ROOT/config/id_rsa"
+readonly REPO_TOKEN=$(cat $SIMONE_ROOT/config/github_token)
 
 # Dirty trick so that there's no need for www-data to have a .ssh folder
 readonly GIT_SSH_COMMAND="ssh -i $REPO_KEY -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \$*"

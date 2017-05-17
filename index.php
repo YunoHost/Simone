@@ -3,7 +3,7 @@
     include_once 'markdown.php';
 
     // Load configuration
-    $config = json_decode(file_get_contents('config.json'), true);
+    $config = json_decode(file_get_contents('config/config.json'), true);
 
     // Get language from browser
     $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
