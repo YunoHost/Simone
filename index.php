@@ -51,7 +51,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="_assets/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="_css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="_css/hl.css">
@@ -96,7 +96,7 @@
         <div id="form" style="display: none">
             <textarea cols="80" rows="40"></textarea>
         </div>
-        <div id="logo"><a href="/" data-toggle="tooltip" data-placement="auto bottom" title="Index"><img src="logo.png"></a></div>
+        <div id="logo"><a href="/" data-toggle="tooltip" data-placement="auto bottom" title="Index"><img src="_assets/logo.png"></a></div>
         <div id="content">
             <?php echo $content ?>
         </div>

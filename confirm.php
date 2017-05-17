@@ -31,8 +31,8 @@ include "common.php";
         }
 
         // Confirm that id and token are right
-        if (!is_dir("_pending/".$id)
-        || file_get_contents('_pending/'.$id.'/token') != $token)
+        if (!is_dir("_pending_contrib/".$id)
+        || file_get_contents('_pending_contrib/'.$id.'/token') != $token)
         {
             return "Invalid id or token.";
         }
@@ -42,9 +42,9 @@ include "common.php";
 
     function makePullRequest($id)
     {
-        $PRurl = '_pending/'.$id.'/pr';
+        $PRurl = '_pending_contrib/'.$id.'/pr';
         shell_exec("./createPR.sh ".$id);
-        shell_exec("cd _botclone && git checkout master");
+        shell_exec("cd _botfork && git checkout master");
 
         if (file_exists($PRurl))
         {
@@ -60,7 +60,7 @@ include "common.php";
     {
         global $email_from, $simone_root;
 
-        $email = file_get_contents('_pending/'.$id.'/email');
+        $email = file_get_contents('_pending_contrib/'.$id.'/email');
 
         // From, to, subject, message ...
         $email_to      = $email;
@@ -98,7 +98,7 @@ include "common.php";
     function deletePending()
     {
         $id = $_GET["id"];
-        rrmdir('_pending/'.$id);
+        rrmdir('_pending_contrib/'.$id);
     }
 
     $inputErrors = validateInputs();

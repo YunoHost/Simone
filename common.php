@@ -7,8 +7,8 @@ function _log($id, $action, $message)
 
     $ip = $_SERVER['REMOTE_ADDR'];
     $time = date("Y/m/d h:i:s");
-    $page = file_get_contents('_pending/'.$id.'/page');
-    $email = file_get_contents('_pending/'.$id.'/email');
+    $page = file_get_contents('_pending_contrib/'.$id.'/page');
+    $email = file_get_contents('_pending_contrib/'.$id.'/email');
 
     $full_message = "[".$time."] ".$ip." ".$action." ".$id." from ".$email." for page ".$page." : ".$message."\n";
 

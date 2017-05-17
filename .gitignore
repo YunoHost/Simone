@@ -3,5 +3,6 @@
 
 github_token
 
-_botclone/
-_pending/
+config/
+_botfork/
+_pending_contrib/

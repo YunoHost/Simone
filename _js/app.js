@@ -140,7 +140,7 @@ $(document).ready(function () {
         descr = $('#descr').val();
 
         $('#reallysend').prop("disabled",true);
-        $('#reallysend').after('&nbsp;<img src="/ajax-loader.gif" class="ajax-loader">');
+        $('#reallysend').after('&nbsp;<img src="/assets/ajax-loader.gif" class="ajax-loader">');
         $.ajax({
             url: 'submit.php',
             type: 'POST',

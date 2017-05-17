@@ -66,7 +66,7 @@ function main()
     local PRURL_FILE="_pending/$ID/pr";
     local BRANCH="anonymous-$ID";
 
-    cd _botclone
+    cd _botfork
     _git checkout master
     _git pull
 
@@ -76,8 +76,8 @@ function main()
     fi
     _git checkout -b $BRANCH
     cd ..
-    cp _pending/$ID/content _botclone/$PAGE
-    cd _botclone/
+    cp _pending/$ID/content _botfork/$PAGE
+    cd _botfork/
     _git add $PAGE
 
     export GIT_AUTHOR_NAME="Yunobot"
