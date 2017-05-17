@@ -51,7 +51,7 @@ function validateID()
         exit 1
     fi
 
-    if [ ! -d "_pending/$ID" ]
+    if [ ! -d "_pending_contrib/$ID" ]
     then
         echo "No pending request for ID $ID"
         exit 2
@@ -61,9 +61,9 @@ function validateID()
 function main()
 {
     local ID="$1"
-    local PAGE="$(cat _pending/$ID/page).md"
-    local DESCR_FILE="_pending/$ID/descr"
-    local PRURL_FILE="_pending/$ID/pr";
+    local PAGE="$(cat _pending_contrib/$ID/page).md"
+    local DESCR_FILE="_pending_contrib/$ID/descr"
+    local PRURL_FILE="_pending_contrib/$ID/pr";
     local BRANCH="anonymous-$ID";
 
     cd _botfork
@@ -76,7 +76,7 @@ function main()
     fi
     _git checkout -b $BRANCH
     cd ..
-    cp _pending/$ID/content _botfork/$PAGE
+    cp _pending_contrib/$ID/content _botfork/$PAGE
     cd _botfork/
     _git add $PAGE
 

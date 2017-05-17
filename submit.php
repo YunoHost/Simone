@@ -60,7 +60,7 @@ include "common.php";
         }
 
         $ip = $_SERVER['REMOTE_ADDR'];
-        $c = "grep ^".$ip."$ _pending/*/ip | wc -l";
+        $c = "grep ^".$ip."$ _pending_contrib/*/ip | wc -l";
         $numberOfPendingSubmissionsWithThisIp = shell_exec($c);
         if ($numberOfPendingSubmissionsWithThisIp > 5)
         {
@@ -83,7 +83,7 @@ include "common.php";
         $ip = $_SERVER['REMOTE_ADDR'];
 
         // Create submission directory
-        $subdir = dirname(__FILE__)."/_pending/".$id;
+        $subdir = dirname(__FILE__)."/_pending_contrib/".$id;
     
         exec('mkdir -p '.$subdir);
 
