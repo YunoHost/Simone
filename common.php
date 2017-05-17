@@ -15,4 +15,28 @@ function _log($id, $action, $message)
     file_put_contents($log_file, $full_message, FILE_APPEND);
 }
 
+function _takeLock()
+{
+    $token = "./lock";
+    for ($i = 1; $i <= 5; $i++) 
+    {
+        if (file_exists($token))
+            sleep(2);
+    }
+
+    if (file_exists($token))
+        return false;
+    else
+    {
+        exec("touch ".$token);
+        return true;
+    }
+}
+
+function _releaseLock()
+{
+    $token = "./lock";
+    exec("rm -f ".$token);
+}
+
 ?>

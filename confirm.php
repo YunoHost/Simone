@@ -1,6 +1,6 @@
 <?php
 
-include "config.php";
+include "config/config.php";
 include "common.php";
 
     function validateInputs()
@@ -111,7 +111,9 @@ include "common.php";
     else
     {
         $id = $_GET["id"];
+        _takeLock();
         $PRurl = makePullRequest($id);
+        _releaseLock();
 
         if ($PRurl == "")
         {

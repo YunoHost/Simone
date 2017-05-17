@@ -1,6 +1,6 @@
 <?php
 
-include "config.php";
+include "config/config.php";
 include "common.php";
 
     function validateInputs()
@@ -122,12 +122,21 @@ include "common.php";
     }
     else
     {
+        if (! _takeLock())
+        {
+            header($_SERVER['SERVER_PROTOCOL'].' 403 FORBIDDEN');
+            echo "Could not acquire lock.";
+            return;
+        }
+
         // Create an ID for this submission
         $id = date("Y-m-d_h-i-s");
         // Create a random token for validation 
         $token = md5(uniqid(rand(), true));
 
         saveSubmission($id, $token);
+        _releaseLock();
+        
         _log($id, "SUBMIT", "Pending");
         sendMail($id, $token);
     }

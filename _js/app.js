@@ -138,6 +138,8 @@ $(document).ready(function () {
     function sendModifications(page) {
         email = $('#email').val();
         descr = $('#descr').val();
+
+        $('#reallysend').prop("disabled",true);
         $('#reallysend').after('&nbsp;<img src="/ajax-loader.gif" class="ajax-loader">');
         $.ajax({
             url: 'submit.php',
@@ -150,6 +152,7 @@ $(document).ready(function () {
         })
         .success(function(data) {
             $('#sendModal').modal('hide');
+            $('#reallysend').prop("disabled",false);
             $('.ajax-loader').remove();
             $('#win').fadeIn('fast', function() {
                 setTimeout(function() {
@@ -159,6 +162,7 @@ $(document).ready(function () {
             return true;
         })
         .fail(function(xhr) {
+            $('#reallysend').prop("disabled",false);
             $('.ajax-loader').remove();
             if (xhr.status == 401) {
                 $('#sendModal alert p').html('Wrong username/password combination');
@@ -285,7 +289,7 @@ $(document).ready(function () {
 
     $.getJSON('i18n.json', function(lng) {
         i18n = lng;
-        $.getJSON('config.json', function(data) {
+        $.getJSON('config/config.json', function(data) {
             conf = data;
             if (store.get('lang') !== null) {
                 changeLanguage(store.get('lang'));
