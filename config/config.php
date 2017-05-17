@@ -4,8 +4,8 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-$simone_root = "https://mjollnir.netlib.re/simone/";
-$email_from  = "yunobot@mjollnir.netlib.re";
+$simone_root = "https://some.domaine.tld/simone/";
+$email_from  = "yunobot@some.domaine.tld";
 $log_file = "/var/log/simone.log";
 
 ?>
