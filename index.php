@@ -21,9 +21,6 @@
 
     if ($rURI === '/') {
         $uri = 'index'.$suffix;
-    // FIXME : for if simone is on "domain.tld/simeone/"
-    } elseif ($rURI === '/simone/') {
-        $uri = 'index'.$suffix;
     } elseif (substr($rURI, -1) === '_')  {
         $uri = substr($rURI, 1, -1);
     } else {

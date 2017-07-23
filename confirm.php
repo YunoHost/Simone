@@ -5,8 +5,6 @@ include "common.php";
 
     function validateInputs()
     {
-        // FIXME sanitize inputs ?
-
         if (($_SERVER['REQUEST_METHOD'] != 'GET')
         ||  ! isset($_GET['id'])
         ||  ! isset($_GET['token']))

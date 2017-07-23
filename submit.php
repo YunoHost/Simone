@@ -5,10 +5,6 @@ include "common.php";
 
     function validateInputs()
     {
-        // FIXME sanitize inputs ?
-        // FIXME limit 'descr' characters and length ?
-
-
         if (($_SERVER['REQUEST_METHOD'] != 'POST') 
         ||  ! isset($_POST['email'])
         ||  ! isset($_POST['page'])
