@@ -1,4 +1,3 @@
-
 <?php
 
 function _log($id, $action, $message)
