@@ -56,6 +56,8 @@ include "common.php";
         }
 
         $ip = $_SERVER['REMOTE_ADDR'];
+        $today = date("Y-m-d");
+
         $c = "grep ^".$ip."$ _pending_contrib/*/ip | wc -l";
         $numberOfPendingSubmissionsWithThisIp = shell_exec($c);
         if ($numberOfPendingSubmissionsWithThisIp > 5)
@@ -63,6 +65,14 @@ include "common.php";
             return "Too many submissions already ongoing with this ip.";
         }
 
+        global $log_file;
+        //    grep " 111.222.333.444 SUBMIT 201x_MM_DD" /var/log/simone.log | wc -l
+        $c = "grep \" ".$ip." SUBMIT ".$today."\" ".$log_file." | wc -l";
+        $numberOfSubmissionsToday = shell_exec($c);
+        if ($numberOfSubmissionsToday > 10)
+        {
+            return "Too many submissions from this IP today! Please try again tomorrow or consider using Git/GitHub directly.";
+        }
 
         return "";
     }
