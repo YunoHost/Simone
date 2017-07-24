@@ -167,7 +167,6 @@ $(document).ready(function () {
             if (xhr.status == 401) {
                 $('#sendModal alert p').html('Wrong username/password combination');
             } else {
-                console.log(xhr);
                 $('#sendFail').html(xhr.responseText);
                 $('#sendFail').fadeIn('fast', function() {
                     setTimeout(function() {
