@@ -3,7 +3,7 @@
     include_once 'markdown.php';
 
     // Load configuration
-    $config = json_decode(file_get_contents('config.json'), true);
+    $config = json_decode(file_get_contents('config/config.json'), true);
 
     // Get language from browser
     $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -48,7 +48,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="_assets/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="_css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="_css/hl.css">
@@ -93,7 +93,7 @@
         <div id="form" style="display: none">
             <textarea cols="80" rows="40"></textarea>
         </div>
-        <div id="logo"><a href="/" data-toggle="tooltip" data-placement="auto bottom" title="Index"><img src="logo.png"></a></div>
+        <div id="logo"><a href="/" data-toggle="tooltip" data-placement="auto bottom" title="Index"><img src="_assets/logo.png"></a></div>
         <div id="content">
             <?php echo $content ?>
         </div>
@@ -143,74 +143,33 @@
             <h3 class="modal-title text-center" id="sendModalLabel" data-i18n="sendModifications"></h3>
           </div>
           <form class="form-horizontal" method="POST" role="form">
-            <div class="modal-body">
-                <div class="panel-group" id="accordion">
-                  <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                      <h4 class="panel-title">
-                        <span class="glyphicon glyphicon-user"></span>&nbsp;
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" data-i18n="withAccount"></a>
-                      </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        <div class="form-group">
-                          <label for="user" class="col-sm-4 control-label" data-i18n="email"></label>
-                          <div class="col-sm-8">
-                            <input type="email" class="form-control" id="user" name="user" placeholder="john@doe.org" required>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="password" class="col-sm-4 control-label" data-i18n="password"></label>
-                          <div class="col-sm-8">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="•••••" required>
-                          </div>
-                        </div>
-                        <small><a class="pull-right" target="_blank" href="#/accounting" data-i18n="youDontHaveAccount"></a></small>
-                        <div class="clearfix"></div>
-                        <br>
-                        <div class="text-center">
-                          <button type="button" class="btn btn-primary" id="reallysend" data-i18n="sendChanges"></button>
-                        </div>
-                        <div class="clearfix"></div>
+              <div class="modal-body">
+                  <div class="form-group">
+                      <label for="email" class="col-sm-4 control-label">
+                          <span data-i18n="email"></span>
+                          <span class="glyphicon glyphicon-question-sign" data-i18n="[title]whyEmail" title=""></span>
+                      </label>
+
+                      <div class="col-sm-8">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="john@doe.org" required>
                       </div>
-                    </div>
-                  </div>
-                  <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                      <h4 class="panel-title">
-                        <span class="glyphicon glyphicon-send"></span>&nbsp;
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" data-i18n="byEmail"></a>
-                      </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <p data-i18n="launchMail"></p>
-                          <br>
-                          <div class="text-center">
-                            <button type="button" class="btn btn-primary" id="sendMail" data-i18n="sendChanges"></button>
-                          </div>
-                          <div class="clearfix"></div>
+                  </div> 
+                  <div class="form-group">
+                      <label for="descr" class="col-sm-4 control-label" data-i18n="description"></label>
+                      <div class="col-sm-8">
+                          <textarea maxlength="150" rows="2" class="form-control" id="descr" name="descr" data-i18n="[placeholder]tellUsWhatYouDid"></textarea>
                       </div>
-                    </div>
                   </div>
-                  <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                      <h4 class="panel-title">
-                        <span class="glyphicon glyphicon-star-empty"></span>&nbsp;
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" data-i18n="viaGit"></a>
-                      </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <p data-i18n="gitInstructions"></p>
-                        <br>
-                        <textarea id="gitarea"></textarea>
-                      </div>
-                    </div>
+                  <div class="text-center">
+                      <button type="button" class="btn btn-primary" id="reallysend">
+                         <span class="glyphicon glyphicon-send"></span>&nbsp;
+                         <span data-i18n="sendChanges"></span>
+                      </button>
                   </div>
-                </div>
-            </div>
+              </div>
+              <div id="sendFail" class="alert alert-danger text-center" style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:1em;display: none"></div>
+              <div class="alert alert-info text-center" style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:1em;">
+                  <span class="glyphicon glyphicon-info-sign"></span>&nbsp;<span data-i18n="considerUsingGithub"></span></div>
           </form>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

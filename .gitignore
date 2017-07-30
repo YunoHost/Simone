@@ -1,5 +1,6 @@
 *.swp
 ./feed.rss
 
-# HTpasswd file
-.htpasswd
+config/
+_botfork/
+_pending_contrib/

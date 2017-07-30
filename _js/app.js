@@ -136,18 +136,23 @@ $(document).ready(function () {
     });
 
     function sendModifications(page) {
-        auth = "Basic "+ btoa($('#user').val() +':'+ $('#password').val());
-        $('#reallysend').after('&nbsp;<img src="/ajax-loader.gif" class="ajax-loader">');
+        email = $('#email').val();
+        descr = $('#descr').val();
+
+        $('#reallysend').prop("disabled",true);
+        $('#reallysend').after('&nbsp;<img src="/assets/ajax-loader.gif" class="ajax-loader">');
         $.ajax({
-            url: 'save.php',
+            url: 'submit.php',
             type: 'POST',
-            data: { 'page': page, 'content': store.get('data-'+ page) },
-            beforeSend: function(req) {
-                req.setRequestHeader('Authorization', auth);
+            data: { 'page': page, 
+                    'content': store.get('data-'+ page), 
+                    'email': email,
+                    'descr': descr 
             }
         })
         .success(function(data) {
             $('#sendModal').modal('hide');
+            $('#reallysend').prop("disabled",false);
             $('.ajax-loader').remove();
             $('#win').fadeIn('fast', function() {
                 setTimeout(function() {
@@ -157,14 +162,15 @@ $(document).ready(function () {
             return true;
         })
         .fail(function(xhr) {
+            $('#reallysend').prop("disabled",false);
             $('.ajax-loader').remove();
             if (xhr.status == 401) {
                 $('#sendModal alert p').html('Wrong username/password combination');
             } else {
-                $('#sendModal').modal('hide');
-                $('#fail').fadeIn('fast', function() {
+                $('#sendFail').html(xhr.responseText);
+                $('#sendFail').fadeIn('fast', function() {
                     setTimeout(function() {
-                        $('#fail').fadeOut();
+                        $('#sendFail').fadeOut();
                     }, 3000);
                 });
                 return false;
@@ -210,7 +216,22 @@ $(document).ready(function () {
     function changeLanguage(lang) {
         $('[data-i18n]').each( function() {
             key = $( this ).attr('data-i18n');
-            $( this ).html(i18n[lang][key]);
+            // Dirty hack to be able to modify other stuff than the inner html,
+            // like i18next does.
+            if (key.startsWith("[title]"))
+            {
+                key = key.replace("[title]", "")
+                $( this ).attr("title", i18n[lang][key]);
+            }
+            else if (key.startsWith("[placeholder]"))
+            {
+                key = key.replace("[placeholder]", "")
+                $( this ).prop("placeholder", i18n[lang][key]);
+            }
+            else
+            {
+                $( this ).html(i18n[lang][key]);
+            }
         });
         store.set('lang', lang);
     }
@@ -282,7 +303,7 @@ $(document).ready(function () {
 
     $.getJSON('i18n.json', function(lng) {
         i18n = lng;
-        $.getJSON('config.json', function(data) {
+        $.getJSON('config/config.json', function(data) {
             conf = data;
             if (store.get('lang') !== null) {
                 changeLanguage(store.get('lang'));

@@ -1,6 +1,7 @@
 {
     "en": {
         "edit": "Edit",
+        "description": "Description",
         "preview": "Preview",
         "send": "Send",
         "revert": "Revert",
@@ -11,7 +12,7 @@
         "youDontHaveAccount": "You don't have an account ?",
         "close": "Close",
         "sendChanges": "Send changes",
-        "modificationSaved": "Modifications successfully saved",
+        "modificationSaved": "Modifications successfully saved. You will receive an email to confirm your submission.",
         "modificationFailed": "An error occured on modification saving",
         "withAccount": "With account",
         "byEmail": "By Email",
@@ -22,10 +23,14 @@
         "subject": "Subject",
         "body": "Body",
         "sitemap": "Site map",
-        "support": "Support"
+        "support": "Support",
+        "whyEmail": "To allow us to fight abuses, you will be asked to confirm your submission by email. We won't make your email public and won't use it for anything else!",
+        "tellUsWhatYouDid": "Tell us what you did there!",
+        "considerUsingGithub": "ProTip™ : if you plan to contribute often to the documentation, consider using Git/Github directly!"
     },
     "fr": {
         "edit": "Éditer",
+        "description": "Description",
         "preview": "Aperçu",
         "send": "Envoyer",
         "revert": "Annuler",
@@ -36,7 +41,7 @@
         "youDontHaveAccount": "Vous n’avez pas de compte ?",
         "close": "Fermer",
         "sendChanges": "Envoyer",
-        "modificationSaved": "Les modifications ont été enregistrées",
+        "modificationSaved": "Les modifications ont été enregistrées. Une confirmation par email va vous être demandée.",
         "modificationFailed": "Une erreur est survenu pendant l’enregistrement",
         "withAccount": "Avec un compte",
         "byEmail": "Par courriel",
@@ -47,6 +52,10 @@
         "subject": "Sujet",
         "body": "Corps",
         "sitemap": "Plan du site",
-        "support": "Support"
+        "support": "Support",
+        "whyEmail": "Pour nous permettre de combattre les abus, nous vous demanderons de confirmer votre proposition de changement par email. Nous ne renderons pas cette adresse publique et ne l'utiliserons pas à d'autres fins !",
+        "tellUsWhatYouDid": "Dites-nous ce que vous avez changé !",
+        "considerUsingGithub": "ProTip™ : si vous prévoyez de contribuer souvent à la documentation, nous vous recommendons d'utiliser Git/Github directement !"
+
     }
 }
