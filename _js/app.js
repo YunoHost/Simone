@@ -100,6 +100,7 @@ $(document).ready(function () {
         });
 
         sam.get('#/:name', function (c) {
+            $(".actions").css('opacity', 1);
             c.viewPage(c.params['name']);
         });
 
