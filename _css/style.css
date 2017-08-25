@@ -5,17 +5,6 @@
     -webkit-box-sizing: border-box;
 }
 
-#jappix_mini,
-#jappix_mini:before,
-#jappix_mini:after,
-#jappix_mini *,
-#jappix_mini *:before,
-#jappix_mini *:after {
-    box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-}
-
 /* micro clearfix (http://nicolasgallagher.com/micro-clearfix-hack/) */
 .cf:before,
 .cf:after {
