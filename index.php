@@ -124,7 +124,6 @@
     </div>
 
     <div class="languages" style="display: none">
-        <a class="btn btn-default" id="help" target="_blank" href="/help">?</a>
         <div class="btn-group dropup">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             <span class="glyphicon glyphicon-globe"></span>&nbsp; <span data-i18n="languages"></span> &nbsp;<span class="caret"></span>
@@ -132,6 +131,9 @@
           <ul class="dropdown-menu">
           </ul>
         </div>
+        <a class="btn btn-default" id="help" target="_blank" href="/help">
+            <span class="glyphicon glyphicon-comment"></span>&nbsp; <span data-i18n="needhelp"></span>
+        </a>
     </div>
 
     <!-- Modal -->
