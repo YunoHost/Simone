@@ -5,6 +5,7 @@
     "defaultLanguage": "en",
     "languages": {
          "en": "English",
+         "ru": "Russian",
          "fr": "Français"
     }
 }
