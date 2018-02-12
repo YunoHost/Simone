@@ -59,5 +59,35 @@
         "tellUsWhatYouDid": "Dites-nous ce que vous avez changé !",
         "considerUsingGithub": "ProTip™ : si vous prévoyez de contribuer souvent à la documentation, nous vous recommendons d'utiliser Git/Github directement !"
 
+    },
+    "ar": {
+        "edit": "تعديل",
+        "description": "الوصف",
+        "preview": "معاينة",
+        "send": "إرسال",
+        "revert": "إلغاء",
+        "languages": "اللغات",
+        "needhelp": "بحاجة إلى مساعدة ؟",
+        "sendModifications": "إرسال الإخطارات",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة السر",
+        "youDontHaveAccount": "ليس لديك حساب ؟",
+        "close": "إغلاق",
+        "sendChanges": "إرسال التعديلات",
+        "modificationSaved": "تمت عملية الإحتفاظ بالتعديلات بنجاح. سوف تتلقى بريدا إلكترونيا لتأكيد ما قمت بإرساله.",
+        "modificationFailed": "طرأ خلل أثناء عملية الإحتفاظ بالتعديلات",
+        "withAccount": "بالحساب",
+        "byEmail": "عبر البريد الإلكتروني",
+        "viaGit": "عبر جيت",
+        "launchMail": "This will launch a pop-up containing the required details to send by mail. Copy/paste the content and be careful not to spam :)",
+        "gitInstructions": "Create or modify <strong><span id='filename'></span></strong> with the below text and send a pull-request to <strong><a id='repogit'></a></strong>.",
+        "to": "إلى",
+        "subject": "الموضوع",
+        "body": "هيكل الرسالة",
+        "sitemap": "خريطة الموقع",
+        "support": "المساعدة",
+        "whyEmail": "To allow us to fight abuses, you will be asked to confirm your submission by email. We won't make your email public and won't use it for anything else!",
+        "tellUsWhatYouDid": "أخبرنا بما قمت به هنا !",
+        "considerUsingGithub": "ProTip™ : إن كنت ترغب في المساهمة الدائمة في إثراء الوثيقة، فننصحك بالقيام بذلك على  جيت/جيت هب مباشرة !"
     }
 }
