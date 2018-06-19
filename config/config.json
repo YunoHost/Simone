@@ -5,8 +5,9 @@
     "defaultLanguage": "en",
     "languages": {
          "en": "English",
-         "ru": "Russian",
          "fr": "Français",
-         "ar": "Arabic"
+         "ar": "Arabic",
+         "de": "Deutsch",
+         "es": "Español"
     }
 }
