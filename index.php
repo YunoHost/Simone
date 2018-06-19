@@ -101,10 +101,10 @@
 
     <footer class="cf">
        @YunoHost on
-       <a href="https://framasphere.org/people/01868d20330c013459cf2a0000053625">Diaspora*</a>
+       • <a href="https://mastodon.social/@yunohost">Mastodon</a>
+       • <a href="https://framasphere.org/people/01868d20330c013459cf2a0000053625">Diaspora*</a>
        • <a href="https://twitter.com/yunohost">Twitter</a>
-       • <a href="/sitemap" data-i18n="sitemap">Sitemap</a>
-       • <a href="/support" data-i18n="support">Support</a>
+       • <a href="/docs" data-i18n="sitemap">Sitemap</a>
        • Datalove <span class="glyphicon glyphicon-heart"></span>
     </footer>
 
