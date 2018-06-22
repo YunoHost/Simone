@@ -211,6 +211,17 @@ $(document).ready(function () {
             }
             $("#wrapper").show();
 
+            // Load table of contents
+            var tableofcontents = $(".tableofcontent");
+            $.each(tableofcontents, function(i, toc){
+                var href = '_pages/'+toc.getAttribute("href")+'.md';
+                var activeid = parseInt(toc.getAttribute("step"))-1;
+                $(toc).load(href, function() {
+                    var activeitem = $($(toc).find(".tableofcontent_items li")[activeid]);
+                    activeitem.css("font-weight", "bold");
+                });
+            });
+
         });
     }
 
