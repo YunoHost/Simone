@@ -180,7 +180,14 @@ $(document).ready(function () {
     }
 
     function loadMD(c, data) {
-        html = marked(data);
+	if (data.indexOf("NO_MARKDOWN_PARSING") !== -1)
+        {
+	    html = data;
+        }
+	else
+	{
+            html = marked(data);
+	}
         $('#form textarea').val(data);
         $('#content').html('');
         c.swap(html, function() {
