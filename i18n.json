@@ -89,7 +89,7 @@
         "whyEmail": "To allow us to fight abuses, you will be asked to confirm your submission by email. We won't make your email public and won't use it for anything else!",
         "tellUsWhatYouDid": "أخبرنا بما قمت به هنا !",
         "considerUsingGithub": "ProTip™ : إن كنت ترغب في المساهمة الدائمة في إثراء الوثيقة، فننصحك بالقيام بذلك على  جيت/جيت هب مباشرة !"
-    }
+    },
     "it": {
         "edit": "Modifica",
         "description": "Descrizione",
@@ -119,5 +119,5 @@
         "whyEmail": "Per aiutarci a combattere gli abusi, ti sarà chiesta conferma del tuo invio via email. Non renderemo la tua email pubblica e non la useremo per nient'altro!",
         "tellUsWhatYouDid": "Scrivici cosa hai fatto qui!",
         "considerUsingGithub": "ProTip™ : se stai pensando di contribuire spesso alla documentazione, considera di usare direttamente Git/Github!"
-    },
+    }
 }
