@@ -6,7 +6,13 @@
     $config = json_decode(file_get_contents('config/config.json'), true);
 
     // Get language from browser
-    $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    if (array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER))
+    {
+        $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    } else {
+        $lang = '';
+    }
+
     $suffix = '_'.$lang;
     if ($lang == '' || $lang == $config['defaultLanguage'] || !array_key_exists($lang, $config['languages'])) {
         $suffix = '';
@@ -19,10 +25,26 @@
         $rURI = $_SERVER["REQUEST_URI"];
     }
 
+    // If people try to access folders ?
+    if (substr($rURI, -1) === '/')  {
+       $rURI = substr($rURI, -1);
+    }
+
+    $force_lang = false;
+    // If asked uri is '/', we want to show the index page
     if ($rURI === '/') {
-        $uri = 'index'.$suffix;
+       $uri = 'index';
+    // If asked uri ends with _ uh, remove it ? (dunno why that would happen..)
     } elseif (substr($rURI, -1) === '_')  {
         $uri = substr($rURI, 1, -1);
+    // If asked uri is something like pagename_fr, the user explictly stated the language
+    // so we extract it and use it instead of the info from HTTP_ACCEPT_LANGUAGE
+    } elseif (substr($rURI, -3, 1) === '_') {
+        $uri = substr($rURI, 1, -3);
+        $lang = substr($rURI, -2);
+        $suffix = substr($rURI, -3);
+        $force_lang = true;
+    // Otherwise simply remove the / in front of the uri
     } else {
         $uri = substr($rURI, 1);
     }
@@ -31,7 +53,14 @@
     $title = $config['siteName'].' • '.$uri;
 
     // Try to get markdown file
-    $markdown = file_get_contents('_pages/'.$uri.'.md');
+    $markdown = "";
+    if (file_exists('_pages/'.$uri.$suffix.'.md'))
+    {
+       $markdown = file_get_contents('_pages/'.$uri.$suffix.'.md');
+    // Fallback to default language
+    } elseif (($force_lang == false) && (file_exists('_pages/'.$uri.'.md'))) {
+       $markdown = file_get_contents('_pages/'.$uri.'.md');
+    }
 
     // 404
     if (!$markdown) {
