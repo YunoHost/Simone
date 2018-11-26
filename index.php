@@ -42,8 +42,11 @@
     } elseif (substr($rURI, -3, 1) === '_') {
         $uri = substr($rURI, 1, -3);
         $lang = substr($rURI, -2);
-        $suffix = substr($rURI, -3);
-        $force_lang = true;
+        if ($lang != $config['defaultLanguage'])
+        {
+		$suffix = substr($rURI, -3);
+		$force_lang = true;
+        }
     // Otherwise simply remove the / in front of the uri
     } else {
         $uri = substr($rURI, 1);
