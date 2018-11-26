@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('#logo a').tooltip();
     $('#logo a').attr('href', '#/');
     $('#content').hide();
+    $(".javascriptDisclaimer").hide();
 
     marked.setOptions({
         highlight: function (code, lang) {
@@ -207,6 +208,8 @@ $(document).ready(function () {
                     $(this).attr('href', '/#/'+ $(this).attr('href').replace(/^\//g, ''));
                 }
             });
+
+	    $(".javascriptDisclaimer").hide();
 
             // Scroll to anchor
             if (typeof anchor !== 'undefined' && $('#'+ anchor).length > 0) {

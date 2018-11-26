@@ -111,6 +111,7 @@
     </div>
 
     <footer class="cf">
+       <span id="javascriptDisclaimer">Some features and pages on this website requires Javascript to be enabled.</br></br></span>
        @YunoHost on
        • <a href="https://mastodon.social/@yunohost">Mastodon</a>
        • <a href="https://framasphere.org/people/01868d20330c013459cf2a0000053625">Diaspora*</a>
