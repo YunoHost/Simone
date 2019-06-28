@@ -23,7 +23,7 @@ Installation
     * __APP__ by your app name
 * Restart nginx `service nginx reload`
 * Create a letsencrypt configuration
-  * You can use letsencrypt.ini and save it as /etc/letsencrypt/conf.ini
+  * You can use conf/letsencrypt.ini and save it as /etc/letsencrypt/conf.ini
   * Update the letsencrypt configuration file replacing
     * __DOMAIN__ by your dedicated domain name
 * Install a letencrypt certificate
