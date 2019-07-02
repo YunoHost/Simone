@@ -5,8 +5,7 @@ Prerequisites
 ------------
 
 * Have a dedicated domain name
-* Choose an app name for your simone
-
+* Choose an app name for your Simone
 
 Installation
 ------------
@@ -34,5 +33,5 @@ Installation
   * if the certificate is properly generated, modify /etc/nginx/conf.d/__DOMAIN__.conf removing the two # before ssl_certificate and ssl_certificate_key
 * Restart nginx `service nginx reload`
 * Clone Simone in /var/www/__APP__
-* Git init in /var/www/__APP__/_pages
+* Git init in /var/www/__APP__/_pages or `git clone https://github.com/yunohost/doc` in /var/www/__APP__/_pages if you want to load the YunoHost documentation in your Simone
 * Chown -R www-data /var/www/__APP__
