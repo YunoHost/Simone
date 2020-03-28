@@ -181,14 +181,14 @@ $(document).ready(function () {
     }
 
     function loadMD(c, data) {
-	if (data.indexOf("NO_MARKDOWN_PARSING") !== -1)
+        if (data.indexOf("NO_MARKDOWN_PARSING") !== -1)
         {
-	    html = data;
+            html = data;
         }
-	else
-	{
+        else
+        {
             html = marked(data);
-	}
+        }
         $('#form textarea').val(data);
         $('#content').html('');
         c.swap(html, function() {
@@ -209,7 +209,7 @@ $(document).ready(function () {
                 }
             });
 
-	    $(".javascriptDisclaimer").hide();
+            $(".javascriptDisclaimer").hide();
 
             // Scroll to anchor
             if (typeof anchor !== 'undefined' && $('#'+ anchor).length > 0) {
