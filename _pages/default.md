@@ -2,10 +2,13 @@
 
 This page is not created yet, you can edit it by pressing ```<ESC>``` on your keyboard or by clicking the "edit" button on the bottom-right side of your screen. You will be able to preview your changes by pressing ```<ESC>``` again or by clicking the "preview" button.
 
-** Note: ** You will need to provide an email adress to validate your submission.
+If you are translating another page, a good starting point might be the markdown code from the original page, which you can obtain by pressing ```<ESC>``` on the original page.
+
+** Note: ** You will need to provide an email address to validate your submission.
 
 ###Syntax
 
 This page use the markdown syntax, please refer to the documentation for further informations:
 
 http://daringfireball.net/projects/markdown/syntax
+
