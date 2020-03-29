@@ -18,7 +18,7 @@ function _git()
 function createPR()
 {
     local BRANCH=$1
-    local TITLE=$2
+    local TITLE=${2//$'\n'/'\n'}
 
     ANSWER=$(curl https://api.github.com/repos/$REPO/pulls \
                   -H "Authorization: token $REPO_TOKEN" \
