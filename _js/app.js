@@ -25,43 +25,91 @@ $(document).ready(function () {
     var app = Sammy('#content', function(sam) {
 
         sam.helpers({
-            view: function (page) {
+            view: function (page_wanted) {
                 var c = this;
-                anchor = page.split('#')[1];
-                page = page.split('#')[0];
+
+                // (I don't understand what this does / why it's here ...)
                 absolutePage = location.href.split('#/')[0].split('/').pop();
                 if (absolutePage !== "" && absolutePage !== page) {
                     c.redirect('/#/'+ absolutePage);
                 }
-                if (page.substr(page.length - 3, 1) != '_') {
-                    currentLang = store.get('lang');
-                    if (currentLang != conf.defaultLanguage) {
-                        page = page +'_'+ currentLang;
-                    }
-                } else if (page.substr(page.length - 2) == conf.defaultLanguage) {
-                    // Indicate page specifically
-                    page = page.substr(0, page.length - 3);
-                }
-                store.set('page', page);
 
-                var d = store.get('data-'+ page);
+                // Let's distinguish :
+                // - the page_wanted by the user, for example a: foo or b: foo_en or c: foo_it
+                // - the basepage : for all a, b, c, it's "foo"
+                // - the md filename to be fetch : for a: foo(.md), b: foo(.md), c: foo_it(.md)
+
+                anchor = page_wanted.split('#')[1];
+                page_wanted = page_wanted.split('#')[0];
+
+                // - appendLang depends on user's language
+                // (taken from browser header or set explicitly through small language selector in bottom left)
+                // english -> appendLang equals empty string
+                // italian -> appendLang equals "_it"
+                var appendLang = '';
+                if (store.get('lang') != conf.defaultLanguage) {
+                     appendLang = '_'+ store.get('lang');
+                }
+
+                // Case a: page_wanted is foo (implicit language)
+                if (page_wanted.substr(page_wanted.length - 3, 1) != '_') {
+                    basepage = page_wanted;
+                    mdfile = basepage + appendLang;
+                    implicitLanguage = true;
+                // Case b: page_wanted is foo_en (explicit default language)
+                } else if (page_wanted.substr(page_wanted.length - 2) == conf.defaultLanguage) {
+                    basepage = page_wanted.substr(0, page_wanted.length - 3);
+                    mdfile = basepage;
+                    implicitLanguage = false;
+                // Case c: page_wanted is foo_it (explicit language)
+                } else {
+                    basepage = page_wanted.substr(0, page_wanted.length - 3);
+                    mdfile = page_wanted;
+                    implicitLanguage = false;
+                }
+
+                store.set('page', page_wanted);
+
+                // If this page was already saved (this happens when edited in-browser?), recover data and load them
+                var d = store.get('data-'+ page_wanted);
                 if (d !== null) {
                    loadMD(c, d);
-                } else {
-                    $("#wrapper").fadeOut(150, function() {
-                        $.get('_pages/'+ page +'.md', function(data) {
-                            loadMD(c, data);
-                        }).fail(function() {
-                            var append = '';
-                            if (store.get('lang') != conf.defaultLanguage) {
-                                 append = '_'+ store.get('lang');
-                            }
-                            $.get('_pages/default'+ append +'.md', function(data) {
+                   return;
+                }
+
+                // Otherwise, try to fetch the md file
+                $("#wrapper").fadeOut(150, function() {
+                    $.get('_pages/'+ mdfile +'.md', function(data) {
+                        loadMD(c, data);
+                    // But maybe the mdfile doesn't exist....
+                    }).fail(function() {
+
+                        // If the user requested the page with implicit language
+                        // and we didnt already try english
+                        if ((implicitLanguage) && (appendLang)) {
+                            // We try to fallback to english
+                            $.get('_pages/'+ basepage +'.md', function(data) {
+
+                                fallback_disclaimer = '<div class="alert alert-warning" markdown="1" style="margin-right: 120px; margin-top: 12px">' + i18n[store.get('lang')]["fallback_to_english"] + "</div>\n\n"
+                                url_to_start_translation = location.href.split("#/")[0] + "#/" + page_wanted + appendLang;
+                                fallback_disclaimer = fallback_disclaimer.replace("{url_to_start_translation}", url_to_start_translation);
+                                data = fallback_disclaimer + data;
+                                loadMD(c, data);
+                            }).fail(function() {
+                                // English page still doesn't exist...
+                                $.get('_pages/default'+ appendLang +'.md', function(data) {
+                                    loadMD(c, data);
+                                });
+                            })
+                        }
+                        // Otherwise, show the default "new page" thing
+                        else {
+                            $.get('_pages/default'+ appendLang +'.md', function(data) {
                                 loadMD(c, data);
                             });
-                        });
+                       }
                     });
-                }
+                });
             },
             viewPage: function(page) {
                 var c = this;
@@ -181,14 +229,14 @@ $(document).ready(function () {
     }
 
     function loadMD(c, data) {
-	if (data.indexOf("NO_MARKDOWN_PARSING") !== -1)
+        if (data.indexOf("NO_MARKDOWN_PARSING") !== -1)
         {
-	    html = data;
+            html = data;
         }
-	else
-	{
+        else
+        {
             html = marked(data);
-	}
+        }
         $('#form textarea').val(data);
         $('#content').html('');
         c.swap(html, function() {
@@ -209,7 +257,7 @@ $(document).ready(function () {
                 }
             });
 
-	    $(".javascriptDisclaimer").hide();
+            $(".javascriptDisclaimer").hide();
 
             // Scroll to anchor
             if (typeof anchor !== 'undefined' && $('#'+ anchor).length > 0) {

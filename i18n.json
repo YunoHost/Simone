@@ -27,7 +27,8 @@
         "support": "Support",
         "whyEmail": "To allow us to fight abuses, you will be asked to confirm your submission by email. We won't make your email public and won't use it for anything else!",
         "tellUsWhatYouDid": "Tell us what you did there!",
-        "considerUsingGithub": "ProTip™ : if you plan to contribute often to the documentation, consider using Git/Github directly!"
+        "considerUsingGithub": "ProTip™ : if you plan to contribute often to the documentation, consider using Git/Github directly!",
+        "fallback_to_english": "The page requested is not yet available in your favourite language. Instead, here is the english version. If you wish to start translating this page, please go to [this page]({url_to_start_translation})."
     },
     "fr": {
         "edit": "Éditer",
@@ -57,8 +58,8 @@
         "support": "Support",
         "whyEmail": "Pour nous permettre de combattre les abus, nous vous demanderons de confirmer votre proposition de changement par email. Nous ne renderons pas cette adresse publique et ne l'utiliserons pas à d'autres fins !",
         "tellUsWhatYouDid": "Dites-nous ce que vous avez changé !",
-        "considerUsingGithub": "ProTip™ : si vous prévoyez de contribuer souvent à la documentation, nous vous recommendons d'utiliser Git/Github directement !"
-
+        "considerUsingGithub": "ProTip™ : si vous prévoyez de contribuer souvent à la documentation, nous vous recommendons d'utiliser Git/Github directement !",
+        "fallback_to_english": "La page demandée n'est pour le moment pas disponible en français. Voici à la place la version en anglais. Si vous souhaitez commencer une traduction de cette page, vous pouvez vous rendre sur [cette page]({url_to_start_translation})."
     },
     "ar": {
         "edit": "تعديل",
