@@ -68,10 +68,10 @@ $(document).ready(function () {
                     implicitLanguage = false;
                 }
 
-                store.set('page', page_wanted);
+                store.set('page', mdfile);
 
                 // If this page was already saved (this happens when edited in-browser?), recover data and load them
-                var d = store.get('data-'+ page_wanted);
+                var d = store.get('data-'+ mdfile);
                 if (d !== null) {
                    loadMD(c, d);
                    return;
