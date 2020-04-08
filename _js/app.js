@@ -56,19 +56,20 @@ $(document).ready(function () {
                     basepage = page_wanted;
                     mdfile = basepage + appendLang;
                     implicitLanguage = true;
+                    store.set('page', mdfile);
                 // Case b: page_wanted is foo_en (explicit default language)
                 } else if (page_wanted.substr(page_wanted.length - 2) == conf.defaultLanguage) {
                     basepage = page_wanted.substr(0, page_wanted.length - 3);
                     mdfile = basepage;
                     implicitLanguage = false;
+                    store.set('page', page_wanted);
                 // Case c: page_wanted is foo_it (explicit language)
                 } else {
                     basepage = page_wanted.substr(0, page_wanted.length - 3);
                     mdfile = page_wanted;
                     implicitLanguage = false;
+                    store.set('page', mdfile);
                 }
-
-                store.set('page', mdfile);
 
                 // If this page was already saved (this happens when edited in-browser?), recover data and load them
                 var d = store.get('data-'+ mdfile);
@@ -87,9 +88,10 @@ $(document).ready(function () {
                         // If the user requested the page with implicit language
                         // and we didnt already try english
                         if ((implicitLanguage) && (appendLang)) {
+                            store.set('page', basepage);
+
                             // We try to fallback to english
                             $.get('_pages/'+ basepage +'.md', function(data) {
-
                                 fallback_disclaimer = '<div class="alert alert-warning" markdown="1" style="margin-right: 120px; margin-top: 12px">' + i18n[store.get('lang')]["fallback_to_english"] + "</div>\n\n"
                                 url_to_start_translation = location.href.split("#/")[0] + "#/" + page_wanted + appendLang;
                                 fallback_disclaimer = fallback_disclaimer.replace("{url_to_start_translation}", url_to_start_translation);
