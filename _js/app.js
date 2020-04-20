@@ -258,7 +258,7 @@ $(document).ready(function () {
 
             // Rewrite links
             $('#content a').each(function () {
-                if ($(this).attr('href').match(/^\/?[a-zA-Z0-9_\-]*$/g)) {
+                if (typeof $(this).attr('href') !== 'undefined' && $(this).attr('href').match(/^\/?[a-zA-Z0-9_\-]*$/g)) {
                     $(this).attr('href', '/#/'+ $(this).attr('href').replace(/^\//g, ''));
                 }
             });
