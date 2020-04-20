@@ -1134,7 +1134,7 @@ marked.defaults = {
   smartLists: false,
   silent: false,
   highlight: null,
-  langPrefix: 'lang-',
+  langPrefix: 'hljs lang-',
   smartypants: false,
   headerPrefix: ''
 };
