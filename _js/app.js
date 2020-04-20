@@ -6,6 +6,10 @@ $(document).ready(function () {
 
     marked.setOptions({
         highlight: function (code, lang) {
+            if (typeof lang == 'undefined')
+	    {
+		    lang = "plaintext";
+	    }
             return hljs.highlight(lang, code).value;
         }
     });
