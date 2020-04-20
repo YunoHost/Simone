@@ -84,7 +84,7 @@
 
     <link rel="stylesheet" type="text/css" href="_css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="_css/hl.css">
-    <link rel="stylesheet" type="text/css" href="_css/solarized_dark.min.css">
+    <link rel="stylesheet" type="text/css" href="_css/agate.css">
     <link rel="stylesheet" type="text/css" href="_css/fonts.css">
     <link rel="stylesheet" type="text/css" href="_css/style.css">
     <!-- Always define js console -->
@@ -187,6 +187,7 @@
               <div id="sendFail" class="alert alert-danger text-center" style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:1em;display: none"></div>
               <div class="alert alert-info text-center" style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:1em;">
                   <span class="glyphicon glyphicon-info-sign"></span>&nbsp;<span data-i18n="considerUsingGithub"></span></div>
+	      <div class="alert alert-warning text-center" style="width:90%; margin-left:auto; margin-right:auto; margin-top:1em; margin-bottom:1em;">We currently have some issue with our email system so you might not receive the email asking you for confirmation. Yet we'll still receive your patch and merge it eventually if it is relevant. Feel free to ping us on the <a href="/chat_rooms">chat</a> if you are impatient ;) !</div>
           </form>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
