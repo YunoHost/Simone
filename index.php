@@ -25,6 +25,8 @@
         $rURI = $_SERVER["REQUEST_URI"];
     }
 
+    $rURI = explode("?", $rURI)[0];
+
     // If people try to access folders ?
     if (substr($rURI, -1) === '/')  {
        $rURI = substr($rURI, -1);
